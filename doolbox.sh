@@ -82,7 +82,7 @@ function select_option {
         fi
         clear
         echo "$container"
-        options=("Logs depuis 30 minutes" "Tous les logs" "Bash" "Vider tous les caches Drupal" "Quitter")
+        options=("Logs depuis 30 minutes" "Tous les logs" "Bash" "Quitter")
 
         select_option "${options[@]}"
         choice=$?
@@ -91,5 +91,4 @@ function select_option {
           0) docker logs $containerId --since '30m' -f;;
           1) docker logs $containerId -f;;
           2) docker exec -it $containerId /bin/bash;;
-          # 3) docker exec -it $containerId /bin/bash -c "./vendor/drush/drush/drush cc all";;
         esac
